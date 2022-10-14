@@ -92,7 +92,7 @@ auto main(int argc, char **argv) -> int
     size_t counter = 0;
     bool first = true;
 
-    for (auto byte = input.get(); input.eof() != true; byte = input.get())
+    for (auto byte = input.get(); byte != EOF; byte = input.get())
     {
         if (counter++ == 0)
         {
