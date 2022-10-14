@@ -14,7 +14,7 @@ uint64_t flags = 0;
 const auto parser = conflict::parser
 {
     conflict::option { { 'h', "help", "Show help" }, flags, (1 << 0) },
-	conflict::option { { 'v', "version", "Show version" }, flags, (1 << 1) }
+    conflict::option { { 'v', "version", "Show version" }, flags, (1 << 1) }
 };
 
 bool parse_flags()
