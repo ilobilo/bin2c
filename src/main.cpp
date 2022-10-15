@@ -17,12 +17,18 @@ const auto parser = conflict::parser
     conflict::option { { 'v', "version", "Show version" }, flags, (1 << 1) }
 };
 
+void usage(bool err)
+{
+    auto &out = (err ? std::cerr : std::cout);
+    out << "Usage:\n";
+    out << "    bin2c input.bin output.h\n";
+}
+
 bool parse_flags()
 {
     if (flags & (1 << 0))
     {
-        std::cout << "Usage:\n";
-        std::cout << "    bin2c input.bin output.h\n";
+        usage(false);
         std::cout << "Options:\n";
         parser.print_help();
         return true;
@@ -46,8 +52,7 @@ auto main(int argc, char **argv) -> int
 
     if (files.size() != 2)
     {
-        std::cerr << "Usage:\n";
-        std::cerr << "    bin2c input.bin output.h" << std::endl;
+        usage(true);
         return EXIT_FAILURE;
     }
 
